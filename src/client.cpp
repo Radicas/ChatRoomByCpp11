@@ -16,6 +16,7 @@ int main(int argc, char* argv[])
 	char message[BUF_SIZE];
 	char message_back[BUF_SIZE];
 	int str_len, recv_len, recv_clnt;
+	pid_t pid;
 
 	if(argc!=3)
 	{
@@ -34,8 +35,8 @@ int main(int argc, char* argv[])
 	if(connect(sock, (struct sockaddr*)&serv_addr, sizeof(serv_addr))== -1)	//调用connect()时，内核会自动分配ip和端口，用于通信	
 		error_handling("connect() error");
 	else 
-		printf("Connected......\n");
-	
+		printf("Connected to chat server......\n");
+
 	while(1)
 	{
 		fputs("Input message(Q to quit): ",stdout);
@@ -43,7 +44,7 @@ int main(int argc, char* argv[])
 	
 		if(!strcmp(message, "q\n") || !strcmp(message, "Q\n"))
 			break;
-		
+				
 		str_len = write(sock, message, strlen(message));
 		recv_len = 0;
 		
@@ -62,7 +63,6 @@ int main(int argc, char* argv[])
 
 void error_handling(const char message[])
 {
-	fputs(message, stderr);
-	fputc('\n', stderr);
+	std::cout << message << std::endl;
 	exit(1);
 }
