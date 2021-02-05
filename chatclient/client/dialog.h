@@ -24,6 +24,7 @@ private slots:
 
     void on_Send_clicked();
 
+    void on_disconnect_clicked();
 
 private:
     Ui::Dialog *ui;

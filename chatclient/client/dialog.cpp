@@ -49,3 +49,9 @@ void Dialog::on_Send_clicked()
         }
     }
 }
+
+void Dialog::on_disconnect_clicked()
+{
+    sock->disconnectFromHost();
+    ui->textBrowser->append("Disconnected from server...");
+}
