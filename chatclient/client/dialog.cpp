@@ -8,7 +8,7 @@ Dialog::Dialog(QWidget *parent)
     , ui(new Ui::Dialog)
 {
     ui->setupUi(this);
-    connect(sock, SIGNAL(readyRead()), this, SLOT(read_data()));
+    //connect(sock, SIGNAL(readyRead()), this, SLOT(read_data()));
 }
 
 Dialog::~Dialog()
@@ -42,15 +42,10 @@ void Dialog::on_Send_clicked()
     {
         if(sock->write(send_text.toLatin1())!=-1)
         {
-            ui->textBrowser->setText(send_text);
+            ui->textBrowser->append(send_text);
         }else
         {
             ui->log->setText("write error");
         }
     }
-}
-
-void Dialog::read_data()
-{
-    QMessageBox::information(this, "tt", sock->readAll());
 }

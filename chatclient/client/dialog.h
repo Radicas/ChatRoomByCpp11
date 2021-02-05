@@ -24,7 +24,6 @@ private slots:
 
     void on_Send_clicked();
 
-    void read_data();
 
 private:
     Ui::Dialog *ui;
