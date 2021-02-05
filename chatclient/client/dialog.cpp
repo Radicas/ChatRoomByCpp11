@@ -7,6 +7,10 @@ Dialog::Dialog(QWidget *parent)
     , ui(new Ui::Dialog)
 {
     ui->setupUi(this);
+    sock = new QTcpSocket(this);
+    ip_addr = new QHostAddress();
+    ip_addr->setAddress(ip);
+    sock->connectToHost(*ip_addr,port);
 }
 
 Dialog::~Dialog()

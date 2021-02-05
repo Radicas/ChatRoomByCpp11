@@ -3,6 +3,7 @@
 
 #include <QDialog>
 #include <QTcpSocket>
+#include <QHostAddress>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Dialog; }
@@ -24,7 +25,10 @@ private slots:
     void on_Send_clicked();
 
 private:
+    QString ip = "23.254.142.59";
+    int port = 666;
     Ui::Dialog *ui;
-
+    QTcpSocket *sock;
+    QHostAddress *ip_addr;
 };
 #endif // DIALOG_H
