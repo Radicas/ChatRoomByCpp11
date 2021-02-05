@@ -8,7 +8,7 @@ Dialog::Dialog(QWidget *parent)
     , ui(new Ui::Dialog)
 {
     ui->setupUi(this);
-    //connect(sock, SIGNAL(readyRead()), this, SLOT(read_data()));
+    connect(sock, SIGNAL(readyRead()), this, SLOT(read_data()));
 }
 
 Dialog::~Dialog()
@@ -40,12 +40,13 @@ void Dialog::on_Send_clicked()
     send_text = ui->textEdit->toPlainText();
     if(send_text!="")
     {
-        if(sock->write(send_text.toLatin1())!=-1)
+        if(sock->state() == QAbstractSocket::ConnectedState)
         {
+            sock->write(send_text.toLatin1());
             ui->textBrowser->append(send_text);
         }else
         {
-            ui->log->setText("write error");
+            ui->log->append("connect error");
         }
     }
 }
@@ -54,4 +55,13 @@ void Dialog::on_disconnect_clicked()
 {
     sock->disconnectFromHost();
     ui->textBrowser->append("Disconnected from server...");
+}
+
+void Dialog::read_data()
+{
+    /*
+     *
+    QByteArray buf = sock->readAll();
+    ui->textBrowser->append(buf);
+    */
 }

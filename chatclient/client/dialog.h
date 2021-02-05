@@ -26,6 +26,8 @@ private slots:
 
     void on_disconnect_clicked();
 
+    void read_data();
+
 private:
     Ui::Dialog *ui;
     QString ip, send_text,recv_text;
