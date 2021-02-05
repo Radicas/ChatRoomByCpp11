@@ -89,6 +89,7 @@ int main(int argc, char* argv[])
 					}else
 					{
 						//处理消息
+						printf("Message from client: %s \n", buf);
 					}
 					if(str_len == 0)
 					{
