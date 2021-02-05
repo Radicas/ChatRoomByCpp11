@@ -24,10 +24,12 @@ private slots:
 
     void on_Send_clicked();
 
+    void read_data();
+
 private:
-    QString ip = "23.254.142.59";
-    int port = 666;
     Ui::Dialog *ui;
+    QString ip, send_text,recv_text;
+    int port;
     QTcpSocket *sock;
     QHostAddress *ip_addr;
 };
