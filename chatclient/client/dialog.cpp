@@ -8,7 +8,6 @@ Dialog::Dialog(QWidget *parent)
     , ui(new Ui::Dialog)
 {
     ui->setupUi(this);
-    connect(sock, SIGNAL(readyRead()), this, SLOT(read_data()));
 }
 
 Dialog::~Dialog()
@@ -33,6 +32,11 @@ void Dialog::on_connect_clicked()
     ip_addr = new QHostAddress();
     ip_addr->setAddress(ip);
     sock->connectToHost(*ip_addr, port);
+    if(sock->state() == QAbstractSocket::ConnectingState)
+    {
+        ui->textBrowser->append("Connecting to server...");
+        connect(sock, SIGNAL(readyRead()), this, SLOT(read_data()));
+    }
 }
 
 void Dialog::on_Send_clicked()
@@ -59,9 +63,6 @@ void Dialog::on_disconnect_clicked()
 
 void Dialog::read_data()
 {
-    /*
-     *
     QByteArray buf = sock->readAll();
-    ui->textBrowser->append(buf);
-    */
+    ui->log->append(buf);
 }
