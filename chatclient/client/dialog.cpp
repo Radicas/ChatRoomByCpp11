@@ -35,6 +35,12 @@ void Dialog::on_connect_clicked()
     if(sock->state() == QAbstractSocket::ConnectingState)
     {
         ui->textBrowser->append("Connecting to server...");
+        if(sock->state()==QAbstractSocket::ConnectedState)
+        {
+            ui->textBrowser->append("ok");
+        }else{
+            ui->textBrowser->append("failed");
+        }
         connect(sock, SIGNAL(readyRead()), this, SLOT(read_data()));
     }
 }
