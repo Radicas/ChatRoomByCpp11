@@ -6,6 +6,8 @@ sign::sign(QWidget *parent) :
     ui(new Ui::sign)
 {
     ui->setupUi(this);
+    ip = "127.0.0.1";
+    port = 999;
 }
 
 sign::~sign()
@@ -22,6 +24,15 @@ void sign::on_go_login_clicked()
 
 void sign::on_register_2_clicked()
 {
+    QString user_name = ui->usr_name->toPlainText();
+    QString user_pwd = ui->usr_pwd->toPlainText();
+    QString user_info = user_name+"\t"+user_pwd;
+    sign_sock = new QTcpSocket();
+    ip_addr = new QHostAddress();
+    ip_addr->setAddress(ip);
+    sign_sock->connectToHost(*ip_addr, port);
+    sign_sock->write(user_info.toLatin1());
+    sign_sock->disconnectFromHost();
     //查询数据库，判断是否注册，若注册就弹窗；未注册即注册
 }
 

@@ -1,7 +1,9 @@
 #ifndef SIGN_H
 #define SIGN_H
-
+#include <QTcpSocket>
 #include <QDialog>
+#include <QHostAddress>
+
 
 namespace Ui {
 class sign;
@@ -27,6 +29,10 @@ private slots:
 
 private:
     Ui::sign *ui;
+    QTcpSocket *sign_sock;
+    QHostAddress *ip_addr;
+    QString ip;
+    int port;
 };
 
 #endif // SIGN_H

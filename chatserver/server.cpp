@@ -83,21 +83,18 @@ int main(int argc, char* argv[])
 				}else
 				{
 					str_len = read(i, buf, BUF_SIZE);
-					if(str_len == -1)
-					{
-						error_handling("read error");
-					}else
-					{
-						//处理消息
-					}
 					if(str_len == 0)
 					{
 						FD_CLR(i, &reads);	
 						close(i);
 						printf("closed client: %d \n", i);
+					}else if(str_len == -1)
+					{
+						error_handling("read error");
 					}else
 					{
-						write(i, buf, str_len);
+						//处理来自客户端的消息
+						printf("%s\n", buf);
 					}
 				}
 			}
