@@ -19,6 +19,7 @@ signals:
 
 public slots:
     void show_this();
+
 private slots:
     void on_go_login_clicked();
 

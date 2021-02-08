@@ -15,9 +15,9 @@ class Login : public QFrame
 public:
     explicit Login(QWidget *parent = nullptr);
     ~Login();
-
 signals:
     void login_to_reg();
+
 public slots:
     void show_this();
 

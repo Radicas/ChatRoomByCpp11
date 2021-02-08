@@ -17,6 +17,7 @@ void sign::on_go_login_clicked()
 {
     //跳转登录界面
     emit reg_to_login();
+    this->hide();
 }
 
 void sign::on_register_2_clicked()
