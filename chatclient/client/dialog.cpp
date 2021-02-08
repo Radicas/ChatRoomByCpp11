@@ -32,17 +32,11 @@ void Dialog::on_connect_clicked()
     ip_addr = new QHostAddress();
     ip_addr->setAddress(ip);
     sock->connectToHost(*ip_addr, port);
-    if(sock->state() == QAbstractSocket::ConnectingState)
+    if(sock->state()==QAbstractSocket::ConnectingState)
     {
         ui->textBrowser->append("Connecting to server...");
-        if(sock->state()==QAbstractSocket::ConnectedState)
-        {
-            ui->textBrowser->append("ok");
-        }else{
-            ui->textBrowser->append("failed");
-        }
-        connect(sock, SIGNAL(readyRead()), this, SLOT(read_data()));
     }
+    connect(sock, SIGNAL(readyRead()), this, SLOT(read_data()));
 }
 
 void Dialog::on_Send_clicked()

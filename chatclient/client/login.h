@@ -16,6 +16,11 @@ public:
     explicit Login(QWidget *parent = nullptr);
     ~Login();
 
+signals:
+    void login_to_reg();
+public slots:
+    void show_this();
+
 private slots:
     void on_login_bton_clicked();
 

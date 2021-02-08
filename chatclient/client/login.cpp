@@ -26,4 +26,11 @@ void Login::on_sign_up_bton_clicked()
     /*
      * 注册界面
      * */
+    emit login_to_reg();
+    this->hide();
+}
+
+void Login::show_this()
+{
+    this->show();
 }
