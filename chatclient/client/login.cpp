@@ -17,6 +17,11 @@ Login::~Login()
 void Login::on_login_bton_clicked()
 {
     conn->do_connect();
+    connect(conn->get_sock(), SIGNAL(readyRead()), this, SLOT(read_data()));
+    QString usr_name = ui->login_name->toPlainText();
+    QString usr_pwd = ui->login_pwd->toPlainText();
+    QString send_msg = usr_name+"\t"+usr_pwd;
+    conn->do_write(send_msg.toLatin1());
     /*
      * 查询数据库，登录，跳转聊天界面
      * */
@@ -37,4 +42,10 @@ void Login::on_sign_up_bton_clicked()
 void Login::show_this()
 {
     this->show();
+}
+
+void Login::read_data()
+{
+    QByteArray buf = conn->get_sock()->readAll();
+
 }

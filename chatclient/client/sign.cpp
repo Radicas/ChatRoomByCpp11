@@ -24,12 +24,25 @@ void sign::on_go_login_clicked()
 
 void sign::on_register_2_clicked()
 {
-    conn->do_connect();
     //查询数据库，判断是否注册，若注册就弹窗；未注册即注册
+    conn->do_connect();
+    QString usr_name = ui->usr_name->toPlainText();
+    QString usr_pwd = ui->usr_pwd->toPlainText();
+    QString send_msg = usr_name+"\t"+usr_pwd;
+    conn->do_write(send_msg);
+    /*
+     *
+     * */
     conn->do_disconnect();
 }
 
 void sign::show_this()
 {
     this->show();
+}
+
+void sign::read_data()
+{
+    QByteArray buf = conn->get_sock()->readAll();
+
 }

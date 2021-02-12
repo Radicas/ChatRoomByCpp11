@@ -11,6 +11,8 @@ public:
     ~connect_server();
     void do_connect();
     void do_disconnect();
+    void do_write(QString msg);
+    QTcpSocket* get_sock();
 private:
     QTcpSocket *sock;
     QHostAddress *ip_addr;

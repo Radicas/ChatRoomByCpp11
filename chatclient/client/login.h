@@ -2,6 +2,7 @@
 #define LOGIN_H
 
 #include <QFrame>
+#include <QByteArray>
 #include "dialog.h"
 #include "ui_login.h"
 #include <QMessageBox>
@@ -23,7 +24,7 @@ signals:
 
 public slots:
     void show_this();
-
+    void read_data();
 private slots:
     void on_login_bton_clicked();
 

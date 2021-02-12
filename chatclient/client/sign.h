@@ -3,6 +3,7 @@
 #include <QTcpSocket>
 #include <QDialog>
 #include <QHostAddress>
+#include <QByteArray>
 #include "connect_server.h"
 
 namespace Ui {
@@ -21,7 +22,7 @@ signals:
 
 public slots:
     void show_this();
-
+    void read_data();
 private slots:
     void on_go_login_clicked();
 
