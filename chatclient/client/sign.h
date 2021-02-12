@@ -3,7 +3,7 @@
 #include <QTcpSocket>
 #include <QDialog>
 #include <QHostAddress>
-
+#include "connect_server.h"
 
 namespace Ui {
 class sign;
@@ -29,10 +29,7 @@ private slots:
 
 private:
     Ui::sign *ui;
-    QTcpSocket *sign_sock;
-    QHostAddress *ip_addr;
-    QString ip;
-    int port;
+    connect_server *conn;
 };
 
 #endif // SIGN_H

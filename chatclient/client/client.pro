@@ -8,12 +8,14 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    connect_server.cpp \
     login.cpp \
     main.cpp \
     dialog.cpp \
     sign.cpp
 
 HEADERS += \
+    connect_server.h \
     dialog.h \
     login.h \
     sign.h

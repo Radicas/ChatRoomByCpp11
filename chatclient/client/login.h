@@ -3,6 +3,9 @@
 
 #include <QFrame>
 #include "dialog.h"
+#include "ui_login.h"
+#include <QMessageBox>
+#include "connect_server.h"
 
 namespace Ui {
 class Login;
@@ -29,6 +32,7 @@ private slots:
 private:
     Ui::Login *ui;
     Dialog d;
+    connect_server *conn;
 };
 
 #endif // LOGIN_H
