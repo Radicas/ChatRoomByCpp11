@@ -28,7 +28,7 @@ void sign::on_register_2_clicked()
     conn->do_connect();
     QString usr_name = ui->usr_name->toPlainText();
     QString usr_pwd = ui->usr_pwd->toPlainText();
-    QString send_msg = usr_name+"\t"+usr_pwd;
+    QString send_msg = "<sql>"+usr_name+","+usr_pwd;
     conn->do_write(send_msg);
     /*
      *

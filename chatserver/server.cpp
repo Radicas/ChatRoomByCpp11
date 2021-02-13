@@ -2,12 +2,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <string>
 #include <unistd.h>
 #include <arpa/inet.h>
 #include <sys/socket.h>
 #include <sys/time.h>
 #include <sys/select.h>
 #define BUF_SIZE 100
+
 
 void error_handling(const char message[]);
 int main(int argc, char* argv[])
@@ -94,7 +96,24 @@ int main(int argc, char* argv[])
 					}else
 					{
 						//处理来自客户端的消息
-						printf("%s\n", buf);
+						std::string buf_head(buf, 5);
+						if(buf_head == "<sql>")
+						{
+							//登录注册信息处理
+							std::string sql_msg = buf;
+							int pos_right_ab = sql_msg.find('>');
+							int pos_comma = sql_msg.find(',');
+							std::string name = sql_msg.substr(pos_right_ab+1, pos_comma-pos_right_ab-1);
+							std::string pwd = sql_msg.substr(++pos_comma);
+							printf("name: %s \n", name.c_str());
+							printf("password: %s \n", pwd.c_str());
+							printf("sql message \n");
+						}
+
+						if(buf_head == "<msg>")
+						{
+							printf("chat message \n");
+						}
 					}
 				}
 			}
