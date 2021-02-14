@@ -7,7 +7,7 @@ Database::Database()
 	connection = mysql_init(NULL);
 	if(connection == NULL)
 	{
-		std::cout << "error:" << mysql_error(connection);
+		std::cout << "mysql init error:" << mysql_error(connection);
 		exit(1);
 	}
 }
@@ -27,7 +27,7 @@ int Database::init_db(std::string host, std::string user, std::string password, 
 	connection = mysql_real_connect(connection, host.c_str(), user.c_str(), password.c_str(), db_name.c_str(), 0, NULL, 0);
 	if(connection == NULL)
 	{
-		std::cout << "error:" << mysql_error(connection);
+		std::cout << "real connect mysql error:" << mysql_error(connection);
 		exit(1);
 	}
 	return 0;
@@ -70,7 +70,7 @@ int Database::insert_sql()
 	std::string sql = "insert into user(u_id,u_name,u_pwd)values(NULL,'"+usrname+"','"+pwd+"');";
 	if(mysql_query(connection, sql.c_str()))
 	{
-		std::cout << "Query Error:" << mysql_error(connection);
+		std::cout << "Insert Error:" << mysql_error(connection);
 		exit(1);
 	}
 	std::cout << endl;
@@ -86,7 +86,7 @@ int Database::delete_sql()
 	std::string sql = "delete from user where id = "+id+";";
 	if(mysql_query(connection, sql.c_str()))
 	{
-		std::cout << "Query Error:" << std::endl;
+		std::cout << "Delete Error:" << std::endl;
 		exit(1);
 	}
 	std::cout << endl;
@@ -103,7 +103,7 @@ int Database::update_sql()
 	std::string sql = "update user set"+thing+"where id="+id+";";
 	if(mysql_query(connection, sql.c_str()))
 	{
-		std::cout << "Query Error:" << std::endl;
+		std::cout << "Update Error:" << std::endl;
 		exit(1);
 	}
 	std::cout << endl;
