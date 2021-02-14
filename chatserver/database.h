@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-#include "/usr/local/mysql-8.0.22-macos10.15-x86_64/include/mysql.h"
+#include <mysql/mysql.h>
 using namespace std;
 class Database
 {
