@@ -4,7 +4,7 @@
 int main()
 {
 	Database db;
-	db.init_db("127.0.0.1", "root", "00000000", "chatroom");
+	db.init_db("127.0.0.1", "zhupeng", "00000000", "chatroom");
 	db.run();
 	return 0;
 }
