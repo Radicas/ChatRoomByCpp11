@@ -101,7 +101,7 @@ int Database::delete_sql()
 	std::string id;
 	std::cout << "enter id you wanna delete" << std::endl;
 	std::cin >> id;
-	std::string sql = "delete from user where id = "+id+";";
+	std::string sql = "delete from user where u_id = "+id+";";
 	if(mysql_query(connection, sql.c_str()))
 	{
 		std::cout << "Delete Error:" << std::endl;
@@ -118,7 +118,7 @@ int Database::update_sql()
 	std::string thing;
 	std::cout << "enter id and the thing you wanna change" << std::endl;
 	std::cin >> id >> thing;
-	std::string sql = "update user set"+thing+"where id="+id+";";
+	std::string sql = "update user set"+thing+"where u_id="+id+";";
 	if(mysql_query(connection, sql.c_str()))
 	{
 		std::cout << "Update Error:" << std::endl;
