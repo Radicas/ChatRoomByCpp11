@@ -45,7 +45,22 @@ int Database::exe_sql()
 	{
 	
 		result = mysql_use_result(connection);
-		std::cout << mysql_field_count(connection) << std::endl;
+		for(int i=0; i<mysql_field_count(connection); i++)
+		{
+			row = mysql_fetch_row(result);
+			if(row==NULL)
+			{
+				std::cout << "row error" << std::endl;
+				exit(1);
+			}else
+			{
+				for(int j=0; j<mysql_num_fields(result)-1; i++)
+				{
+					std::cout << row[j] << "\t";
+				}
+				std::cout << std::endl;
+			}
+		}
 		/*
 		for(int i=0; i<mysql_field_count(connection); ++i)
 		{
@@ -59,7 +74,7 @@ int Database::exe_sql()
 			std::cout << endl;
 		}
 		*/
-		std::cout << endl;
+		std::cout << std::endl;
 		mysql_free_result(result);
 	}
 	return 0;
