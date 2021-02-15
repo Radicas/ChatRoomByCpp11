@@ -54,7 +54,11 @@ int Database::exe_sql()
 				break;
 			}else
 			{
-				std::cout << mysql_num_fields(result);
+				for(int j=0; j<mysql_num_fields(result); j++)
+				{
+					std::cout << row[j];
+				}
+				
 			}
 		}
 		/*
