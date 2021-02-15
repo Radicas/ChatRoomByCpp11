@@ -45,7 +45,7 @@ int Database::exe_sql()
 	{
 	
 		result = mysql_use_result(connection);
-		std::cout << mysql_field_count(connection);
+		std::cout << mysql_field_count(connection) << std::endl;
 		/*
 		for(int i=0; i<mysql_field_count(connection); ++i)
 		{
