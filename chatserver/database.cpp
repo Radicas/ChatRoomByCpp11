@@ -50,15 +50,14 @@ int Database::exe_sql()
 			row = mysql_fetch_row(result);
 			if(row==NULL)
 			{
-				std::cout << "row error" << std::endl;
 				break;
 			}else
 			{
 				for(int j=0; j<mysql_num_fields(result); j++)
 				{
-					std::cout << row[j];
+					std::cout << row[j] << "\t";
 				}
-				
+				std::cout << std::endl;	
 			}
 		}
 		/*
