@@ -51,14 +51,10 @@ int Database::exe_sql()
 			if(row==NULL)
 			{
 				std::cout << "row error" << std::endl;
-				exit(1);
+				break;
 			}else
 			{
-				for(int j=0; j<mysql_num_fields(result)-1; i++)
-				{
-					std::cout << row[j] << "\t";
-				}
-				std::cout << std::endl;
+				std::cout << mysql_num_fields(result);
 			}
 		}
 		/*
