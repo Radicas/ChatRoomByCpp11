@@ -103,7 +103,7 @@ bool Database::query_name_sql(std::string name)
 
 void Database::do_query_name_sql(std::string name)
 {
-	exe_sql(name);
+	query_name_sql(name);
 }
 
 int Database::insert_sql()
@@ -118,7 +118,7 @@ int Database::insert_sql()
 		std::cout << "Insert Error:" << mysql_error(connection);
 		exit(1);
 	}
-	std::cout << endl;
+	std::cout << std::endl;
 	return 0;
 }
 
@@ -133,7 +133,7 @@ int Database::delete_sql()
 		std::cout << "Delete Error:" << std::endl;
 		exit(1);
 	}
-	std::cout << endl;
+	std::cout << std::endl;
 	return 0;
 }
 
@@ -149,6 +149,6 @@ int Database::update_sql()
 		std::cout << "Update Error:" << std::endl;
 		exit(1);
 	}
-	std::cout << endl;
+	std::cout << std::endl;
 	return 0;
 }
