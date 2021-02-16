@@ -93,11 +93,11 @@ bool Database::query_name_sql(std::string name)
 		row = mysql_fetch_row(result);
 		if(row == NULL)
 		{
-			mysql_free_result(connection);
+			mysql_free_result(result);
 			return false;
 		}else
 		{
-			mysql_free_result(connection);
+			mysql_free_result(result);
 			return true;
 		}
 	}
