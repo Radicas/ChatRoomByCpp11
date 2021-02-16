@@ -4,7 +4,7 @@ connect_server::connect_server()
 {
     sock = new QTcpSocket();
     ip_addr = new QHostAddress();
-    port = 888;
+    port = 999;
     ip = "160.119.70.109";
     ip_addr->setAddress(ip);
 }

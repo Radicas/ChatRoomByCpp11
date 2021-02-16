@@ -35,7 +35,7 @@ void sign::on_register_2_clicked()
     /*
      *
      * */
-    conn->do_disconnect();
+    //conn->do_disconnect();
 }
 
 void sign::show_this()
