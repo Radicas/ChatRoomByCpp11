@@ -1,5 +1,4 @@
 #include "mydb.h"
-#include <iostream>
 #include <cstdlib>
 
 Database::Database()
@@ -81,7 +80,7 @@ int Database::exe_sql()
 	return 0;
 }
 */
-bool Database::exe_sql(std::string name)
+bool Database::query_name_sql(std::string name)
 {
 	std::string sql = "select u_name from user where u_name='"+name+"';";
 	if(mysql_query(connection, sql.c_str()))
@@ -102,7 +101,7 @@ bool Database::exe_sql(std::string name)
 	}
 }
 
-void Database::exe_sql(std::string name)
+void Database::do_query_name_sql(std::string name)
 {
 	exe_sql(name);
 }
@@ -120,7 +119,6 @@ int Database::insert_sql()
 		exit(1);
 	}
 	std::cout << endl;
-	exe_sql();
 	return 0;
 }
 
@@ -136,7 +134,6 @@ int Database::delete_sql()
 		exit(1);
 	}
 	std::cout << endl;
-	exe_sql();
 	return 0;
 }
 
@@ -153,6 +150,5 @@ int Database::update_sql()
 		exit(1);
 	}
 	std::cout << endl;
-	exe_sql();
 	return 0;
 }
