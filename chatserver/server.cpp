@@ -108,7 +108,13 @@ int main(int argc, char* argv[])
 							int pos_comma = sql_msg.find(',');
 							std::string name = sql_msg.substr(pos_right_ab+1, pos_comma-pos_right_ab-1);
 							std::string pwd = sql_msg.substr(++pos_comma);
-						
+							if(db.do_query_name_sql(name))
+							{
+								write(i, "user_exist", 10);	
+							}else
+							{
+								write(i, "user_not_exist", 14);
+							}
 							printf("sql message \n");
 						}
 

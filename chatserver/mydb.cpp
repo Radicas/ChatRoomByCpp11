@@ -101,9 +101,9 @@ bool Database::query_name_sql(std::string name)
 	}
 }
 
-void Database::do_query_name_sql(std::string name)
+bool Database::do_query_name_sql(std::string name)
 {
-	query_name_sql(name);
+	return query_name_sql(name);
 }
 
 int Database::insert_sql()

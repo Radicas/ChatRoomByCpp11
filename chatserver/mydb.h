@@ -8,7 +8,7 @@ public:
 	~Database();
 
 	int init_db(std::string host, std::string user, std::string password, std::string db_name);
-	void do_query_name_sql(std::string name);
+	bool do_query_name_sql(std::string name);
 	void do_insert_sql();
 	void do_delete_sql();
 	void do_update_sql();
