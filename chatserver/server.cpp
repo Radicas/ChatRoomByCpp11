@@ -99,10 +99,10 @@ int main(int argc, char* argv[])
 					}else
 					{
 						//处理来自客户端的消息
-						std::string buf_head(buf, 5);
-						if(buf_head == "<sql>")
+						std::string buf_head(buf, 7);
+						if(buf_head == "<sql_s>")
 						{
-							//登录注册信息处理
+							//注册信息处理
 							std::string sql_msg = buf;
 							int pos_right_ab = sql_msg.find('>');
 							int pos_comma = sql_msg.find(',');
@@ -122,6 +122,23 @@ int main(int argc, char* argv[])
 								}
 							}
 							printf("sql message \n");
+						}
+						
+						if(buf_head == "<sql_l>")
+						{
+							//登录信息处理
+							std::string sql_msg = buf;
+							int pos_right_ab = sql_msg.find('>');
+							int pos_comma = sql_msg.find(',');
+							std::string name = sql_msg.substr(pos_right_ab+1, pos_comma-pos_right_ab-1);
+							std::string pwd = sql_msg.substr(++pos_comma);
+							if(db.do_query_login_sql(name, pwd))
+							{
+								write(i, "CHECK", 5);
+							}else
+							{
+								write(i, "WRONG", 5);
+							}
 						}
 
 						if(buf_head == "<msg>")

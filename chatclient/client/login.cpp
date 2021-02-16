@@ -20,14 +20,14 @@ void Login::on_login_bton_clicked()
     connect(conn->get_sock(), SIGNAL(readyRead()), this, SLOT(read_data()));
     QString usr_name = ui->login_name->toPlainText();
     QString usr_pwd = ui->login_pwd->toPlainText();
-    QString send_msg = "<sql>"+usr_name+","+usr_pwd;
+    QString send_msg = "<sql_l>"+usr_name+","+usr_pwd;
     conn->do_write(send_msg.toLatin1());
     /*
      * 查询数据库，登录，跳转聊天界面
      * */
-    d.show();
-    this->hide();
-    conn->do_disconnect();
+    //d.show();
+    //this->hide();
+    //conn->do_disconnect();
 }
 
 void Login::on_sign_up_bton_clicked()
@@ -47,5 +47,18 @@ void Login::show_this()
 void Login::read_data()
 {
     QByteArray buf = conn->get_sock()->readAll();
+    if(buf == "CHECK")
+    {
+        jump_chatroom();
+    }else if(buf == "WRONG")
+    {
+        QMessageBox::information(this, "登录信息", "登录失败，原因不明！！");
+    }
+}
 
+void Login::jump_chatroom()
+{
+    d.show();
+    this->hide();
+    //conn->do_disconnect();
 }

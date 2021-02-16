@@ -30,13 +30,8 @@ void sign::on_register_2_clicked()
     connect(conn->get_sock(), SIGNAL(readyRead()), this, SLOT(read_data()));
     QString usr_name = ui->usr_name->toPlainText();
     QString usr_pwd = ui->usr_pwd->toPlainText();
-    QString send_msg = "<sql>"+usr_name+","+usr_pwd;
+    QString send_msg = "<sql_s>"+usr_name+","+usr_pwd;
     conn->do_write(send_msg);
-
-    /*
-     *
-     * */
-    //conn->do_disconnect();
 }
 
 void sign::show_this()

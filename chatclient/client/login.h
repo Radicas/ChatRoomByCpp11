@@ -34,6 +34,7 @@ private:
     Ui::Login *ui;
     Dialog d;
     connect_server *conn;
+    void jump_chatroom();
 };
 
 #endif // LOGIN_H

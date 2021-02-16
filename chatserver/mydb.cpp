@@ -108,6 +108,34 @@ bool Database::do_query_name_sql(std::string name)
 	return query_name_sql(name);
 }
 
+bool Database::query_login_sql(std::string name, std::string password)
+{
+	std::string sql = "select * from user where u_name='"+name+"' and u_pwd='"+password+"';";	
+	if(mysql_query(connection, sql.c_str()))
+	{
+		std::cout << "query_login_sql error" << mysql_error(connection);
+		exit(1);
+	}else
+	{
+		result = mysql_use_result(connection);
+		row = mysql_fetch_row(result);
+		if(row == NULL)
+		{
+			mysql_free_result(result);
+			return false;
+		}else
+		{
+			mysql_free_result(result);
+			return true;
+		}
+	}
+}
+
+bool Database::do_query_login_sql(std::string name, std::string password)
+{
+	return query_login_sql(name, password);	
+}
+
 bool Database::insert_sql(std::string name, std::string password)
 {
 	std::string sql = "insert into user(u_id,u_name,u_pwd)values(NULL,'"+name+"','"+password+"');";
