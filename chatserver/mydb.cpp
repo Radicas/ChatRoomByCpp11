@@ -32,7 +32,9 @@ int Database::init_db(std::string host, std::string user, std::string password, 
 	}
 	return 0;
 }
-
+/*
+ *
+ *
 int Database::exe_sql()
 {
 	std::string sql;
@@ -60,25 +62,25 @@ int Database::exe_sql()
 				std::cout << std::endl;	
 			}
 		}
-		/*
-		for(int i=0; i<mysql_field_count(connection); ++i)
-		{
-			row = mysql_fetch_row(result);
-			if(row == NULL)
-				break;
-			for(int j=0; j<mysql_num_fields(result); ++i)
-			{
-				std::cout << row[j] << "\t";
-			}
-			std::cout << endl;
-		}
-		*/
+
+	//	for(int i=0; i<mysql_field_count(connection); ++i)
+	//	{
+	//		row = mysql_fetch_row(result);
+	//		if(row == NULL)
+	//			break;
+	//		for(int j=0; j<mysql_num_fields(result); ++i)
+	//		{
+	//			std::cout << row[j] << "\t";
+	//		}
+	//		std::cout << endl;
+	//	}
+		
 		std::cout << std::endl;
 		mysql_free_result(result);
 	}
 	return 0;
 }
-
+*/
 bool Database::exe_sql(std::string name)
 {
 	std::string sql = "select u_name from user where u_name='"+name+"';";
