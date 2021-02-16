@@ -14,7 +14,7 @@ public:
 	void do_update_sql();
 private:
 	bool query_name_sql(std::string name);	
-	bool insert_sql();
+	bool insert_sql(std::string name, std::string password);
 	int delete_sql();
 	int update_sql();
 	MYSQL* connection;
