@@ -8,6 +8,7 @@
 #include <sys/socket.h>
 #include <sys/time.h>
 #include <sys/select.h>
+#include "mydb.h"
 #define BUF_SIZE 100
 
 
@@ -18,6 +19,8 @@ int main(int argc, char* argv[])
 	struct sockaddr_in serv_adr, clnt_adr;	//套接字结构体
 	struct timeval timeout;	//设置超时
 	fd_set reads, cpy_reads;	//fd变量	
+	Database db;
+	db.init_db("127.0.0.1","zhupeng","00000000","chatroom");
 
 	socklen_t adr_sz;	//结构体长度
 	int fd_max, str_len, fd_num, i;
@@ -105,8 +108,7 @@ int main(int argc, char* argv[])
 							int pos_comma = sql_msg.find(',');
 							std::string name = sql_msg.substr(pos_right_ab+1, pos_comma-pos_right_ab-1);
 							std::string pwd = sql_msg.substr(++pos_comma);
-							printf("name: %s \n", name.c_str());
-							printf("password: %s \n", pwd.c_str());
+						
 							printf("sql message \n");
 						}
 
