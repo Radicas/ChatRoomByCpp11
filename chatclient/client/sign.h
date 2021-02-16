@@ -5,6 +5,7 @@
 #include <QHostAddress>
 #include <QByteArray>
 #include <QMessageBox>
+#include <string>
 #include "connect_server.h"
 
 namespace Ui {

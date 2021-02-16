@@ -106,22 +106,28 @@ bool Database::do_query_name_sql(std::string name)
 	return query_name_sql(name);
 }
 
-int Database::insert_sql()
+bool Database::insert_sql(std::string name, std::string password)
 {
-	std::string usrname;
-	std::string pwd;
-	std::cout << "entter name and password" << std::endl;
-	std::cin >> usrname >> pwd;
-	std::string sql = "insert into user(u_id,u_name,u_pwd)values(NULL,'"+usrname+"','"+pwd+"');";
+	std::string sql = "insert into user(u_id,u_name,u_pwd)values(NULL,'"+name+"','"+password+"');";
 	if(mysql_query(connection, sql.c_str()))
 	{
 		std::cout << "Insert Error:" << mysql_error(connection);
 		exit(1);
 	}
-	std::cout << std::endl;
+	if(query_name_sql(name))
+	{
+		return true;
+	}else
+	{
+		return false;
+	}
 	return 0;
 }
 
+bool Database::do_insert_sql(std::string name, std::string password)
+{
+	return insert_sql(name, password);
+}
 int Database::delete_sql()
 {
 	std::string id;

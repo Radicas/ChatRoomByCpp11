@@ -45,6 +45,15 @@ void sign::show_this()
 
 void sign::read_data()
 {
-    //QByteArray buf = conn->get_sock()->readAll();
-    QMessageBox::information(this, "注册信息", "asd");
+    QByteArray buf = conn->get_sock()->readAll();
+    if(buf == "EXIST")
+    {
+        QMessageBox::information(this, "注册信息", "用户名已存在");
+    }else if(buf == "INSERT_OK")
+    {
+        QMessageBox::information(this, "注册信息", "注册成功，请返回登录");
+    }else if(buf == "INSERT_FAILED")
+    {
+        QMessageBox::information(this, "注册信息", "注册失败！！");
+    }
 }

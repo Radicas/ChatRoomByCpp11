@@ -110,14 +110,16 @@ int main(int argc, char* argv[])
 							std::string pwd = sql_msg.substr(++pos_comma);
 							if(db.do_query_name_sql(name))
 							{
-								int num = write(i, "user_exist", 11);	
-								printf("write: %d \n", num);
-								printf("user exist send \n");
+								write(i, "EXIST", 6);	
 							}else
 							{
-								write(i, "user_not_exist", 15);
-								printf("write: %d \n", num);	
-								printf("user not exist send \n");
+								if(db.do_insert_sql(name, pwd))
+								{
+									write(i, "INSERT_OK", 10);
+								}else
+								{
+									write(i, "INSERT_FAILED", 14);
+								}
 							}
 							printf("sql message \n");
 						}
