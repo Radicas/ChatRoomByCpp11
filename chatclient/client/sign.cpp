@@ -26,11 +26,12 @@ void sign::on_register_2_clicked()
 {
     //查询数据库，判断是否注册，若注册就弹窗；未注册即注册
     conn->do_connect();
+    connect(conn->get_sock(), SIGNAL(readyRead()), this, SLOT(read_data()));
     QString usr_name = ui->usr_name->toPlainText();
     QString usr_pwd = ui->usr_pwd->toPlainText();
     QString send_msg = "<sql>"+usr_name+","+usr_pwd;
     conn->do_write(send_msg);
-    connect(conn->get_sock(), SIGNAL(readyRead()), this, SLOT(read_data()));
+
     /*
      *
      * */
@@ -44,6 +45,6 @@ void sign::show_this()
 
 void sign::read_data()
 {
-    QByteArray buf = conn->get_sock()->readAll();
-    QMessageBox::information(this, "注册信息", buf);
+    //QByteArray buf = conn->get_sock()->readAll();
+    QMessageBox::information(this, "注册信息", "asd");
 }
