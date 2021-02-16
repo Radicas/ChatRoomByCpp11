@@ -18,6 +18,7 @@ sign::~sign()
 void sign::on_go_login_clicked()
 {
     //跳转登录界面
+    conn->do_disconnect();
     emit reg_to_login();
     this->hide();
 }
@@ -57,6 +58,6 @@ void sign::read_data()
         QMessageBox::information(this, "注册信息", "注册失败！！");
     }else
     {
-        QMessageBox::information(this, "注册信息", "write函数有问题！！");
+        QMessageBox::information(this, "注册信息", buf);
     }
 }
