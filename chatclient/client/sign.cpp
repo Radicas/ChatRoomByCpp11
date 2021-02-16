@@ -55,5 +55,8 @@ void sign::read_data()
     }else if(buf == "INSERT_FAILED")
     {
         QMessageBox::information(this, "注册信息", "注册失败！！");
+    }else
+    {
+        QMessageBox::information(this, "注册信息", "write函数有问题！！");
     }
 }

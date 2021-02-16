@@ -11,6 +11,7 @@ connect_server::connect_server()
 
 connect_server::~connect_server()
 {
+    sock->disconnectFromHost();
     delete sock;
     delete ip_addr;
 }

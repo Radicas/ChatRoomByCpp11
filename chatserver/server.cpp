@@ -110,15 +110,15 @@ int main(int argc, char* argv[])
 							std::string pwd = sql_msg.substr(++pos_comma);
 							if(db.do_query_name_sql(name))
 							{
-								write(i, "EXIST", 6);	
+								write(i, "EXIST", 5);	
 							}else
 							{
 								if(db.do_insert_sql(name, pwd))
 								{
-									write(i, "INSERT_OK", 10);
+									write(i, "INSERT_OK", 9);
 								}else
 								{
-									write(i, "INSERT_FAILED", 14);
+									write(i, "INSERT_FAILED", 13);
 								}
 							}
 							printf("sql message \n");
