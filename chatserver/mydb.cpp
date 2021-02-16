@@ -100,6 +100,11 @@ bool Database::exe_sql(std::string name)
 	}
 }
 
+void Database::exe_sql(std::string name)
+{
+	exe_sql(name);
+}
+
 int Database::insert_sql()
 {
 	std::string usrname;
