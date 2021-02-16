@@ -1,7 +1,6 @@
 #include "database.h"
 #include <iostream>
 #include <cstdlib>
-#include <stdio.h>
 
 Database::Database()
 {
@@ -46,12 +45,20 @@ int Database::exe_sql()
 	{
 	
 		result = mysql_use_result(connection);
-		while(row=mysql_fetch_row(result))
+		for(int i=0; i<mysql_field_count(connection); i++)
 		{
-			char* id = row[0];
-			char* name = row[1];
-			char* password = row[2];
-			printf("%s %s %s \n",id,name,password);
+			row = mysql_fetch_row(result);
+			if(row==NULL)
+			{
+				break;
+			}else
+			{
+				for(int j=0; j<mysql_num_fields(result); j++)
+				{
+					std::cout << row[j] << "\t";
+				}
+				std::cout << std::endl;	
+			}
 		}
 		/*
 		for(int i=0; i<mysql_field_count(connection); ++i)
