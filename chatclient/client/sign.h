@@ -4,6 +4,7 @@
 #include <QDialog>
 #include <QHostAddress>
 #include <QByteArray>
+#include <QMessageBox>
 #include "connect_server.h"
 
 namespace Ui {
@@ -25,12 +26,12 @@ public slots:
     void read_data();
 private slots:
     void on_go_login_clicked();
-
     void on_register_2_clicked();
 
 private:
     Ui::sign *ui;
     connect_server *conn;
+
 };
 
 #endif // SIGN_H

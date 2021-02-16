@@ -111,9 +111,11 @@ int main(int argc, char* argv[])
 							if(db.do_query_name_sql(name))
 							{
 								write(i, "user_exist", 10);	
+								printf("user exist send");
 							}else
 							{
 								write(i, "user_not_exist", 14);
+								printf("user not exist send");
 							}
 							printf("sql message \n");
 						}

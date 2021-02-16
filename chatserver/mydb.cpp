@@ -85,7 +85,7 @@ bool Database::query_name_sql(std::string name)
 	std::string sql = "select u_name from user where u_name='"+name+"';";
 	if(mysql_query(connection, sql.c_str()))
 	{
-		std::cout << "exe_sql query error" << mysql_error(connection);
+		std::cout << "query user error" << mysql_error(connection);
 		exit(1);
 	}else
 	{
