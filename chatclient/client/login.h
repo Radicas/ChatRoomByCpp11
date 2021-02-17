@@ -24,7 +24,7 @@ signals:
 
 public slots:
     void show_this();
-    void read_data();
+    void read_data(QString usr_name);
 private slots:
     void on_login_bton_clicked();
 
@@ -34,7 +34,7 @@ private:
     Ui::Login *ui;
     Dialog d;
     connect_server *conn;
-    void jump_chatroom();
+    void jump_chatroom(QString usr_name);
 };
 
 #endif // LOGIN_H
