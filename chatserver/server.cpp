@@ -121,7 +121,7 @@ int main(int argc, char* argv[])
 									write(i, "INSERT_FAILED", 13);
 								}
 							}
-							printf("sql message \n");
+							printf("sign up message \n");
 						}
 						
 						if(buf_head == "<sql_l>")
@@ -139,6 +139,7 @@ int main(int argc, char* argv[])
 							{
 								write(i, "WRONG", 5);
 							}
+							printf("login message\n");
 						}
 
 						if(buf_head == "<msg_u>")

@@ -16,8 +16,7 @@ class Dialog : public QDialog
 public:
     Dialog(QWidget *parent = nullptr);
     ~Dialog();
-    QString  get_user_name(QString user_name);
-
+    void create_socket();
 private slots:
     void on_clear_in_clicked();
 
