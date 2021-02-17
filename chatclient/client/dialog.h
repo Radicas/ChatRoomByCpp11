@@ -4,7 +4,7 @@
 #include <QDialog>
 #include <QTcpSocket>
 #include <QHostAddress>
-
+#include "connect_server.h"
 QT_BEGIN_NAMESPACE
 namespace Ui { class Dialog; }
 QT_END_NAMESPACE
@@ -16,11 +16,10 @@ class Dialog : public QDialog
 public:
     Dialog(QWidget *parent = nullptr);
     ~Dialog();
+    QString  get_user_name(QString user_name);
 
 private slots:
     void on_clear_in_clicked();
-
-    void on_connect_clicked();
 
     void on_Send_clicked();
 
@@ -29,10 +28,9 @@ private slots:
     void read_data();
 
 private:
+    QString usr_name;
     Ui::Dialog *ui;
-    QString ip, send_text,recv_text;
-    int port;
-    QTcpSocket *sock;
-    QHostAddress *ip_addr;
+    QString send_text,recv_text;
+    connect_server* conn;
 };
 #endif // DIALOG_H
