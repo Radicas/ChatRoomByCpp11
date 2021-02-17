@@ -145,7 +145,19 @@ int main(int argc, char* argv[])
 						if(buf_head == "<msg_u>")
 						{
 							printf("chat message \n");
-							write(i, buf, sizeof(buf));
+							for(int i=0; i<fd_max+1; i++)
+							{
+								if(FD_ISSET(i, &cpy_reads))	
+								{
+									if(i==serv_sock)
+									{
+										continue;
+									}else
+									{
+										write(i, buf, sizeof(buf));
+									}
+								}
+							}
 						}
 					}
 				}
