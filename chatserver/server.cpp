@@ -145,6 +145,7 @@ int main(int argc, char* argv[])
 						if(buf_head == "<msg_u>")
 						{
 							printf("chat message \n");
+							write(i, buf, sizeof(buf));
 						}
 					}
 				}
