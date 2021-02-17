@@ -147,7 +147,7 @@ int main(int argc, char* argv[])
 							printf("chat message \n");
 							for(int i=0; i<fd_max+1; i++)
 							{
-								if(FD_ISSET(i, &cpy_reads))	
+								if(FD_ISSET(i, &reads))	
 								{
 									if(i==serv_sock)
 									{
